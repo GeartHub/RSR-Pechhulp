@@ -22,17 +22,23 @@ class MapViewController: UIViewController {
     var currentCoordinate: CLLocationCoordinate2D?
     var pinAnnotationView: MKPinAnnotationView!
     let geoCoder = CLGeocoder()
+    let zoomLevel: Double = 40
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationServices()
-        callNowView.isHidden = true
-        
+        callNowView.alpha = 0
     }
+    @IBAction func cancelButton(_ sender: Any) {
+        callNowView.alpha = 0
+        locationView.alpha = 1
+        callNowButton.alpha = 1
+    }
+    
     @IBAction func callNowButton(_ sender: Any) {
-        locationView.isHidden = true
-        callNowButton.isHidden = true
-        callNowView.isHidden = false
+        locationView.alpha = 0
+        callNowButton.alpha = 0
+        callNowView.alpha = 1
     }
     func configureLocationServices(){
         locationManager.delegate = self
@@ -49,7 +55,7 @@ class MapViewController: UIViewController {
         }
     }
     func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D){
-        let region = MKCoordinateRegionMakeWithDistance(coordinate, (coordinate.latitude), (coordinate.longitude))
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, (coordinate.latitude * zoomLevel), (coordinate.longitude * zoomLevel))
         mapView.setRegion(region, animated: true)
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         geoCoder.reverseGeocodeLocation(location) {

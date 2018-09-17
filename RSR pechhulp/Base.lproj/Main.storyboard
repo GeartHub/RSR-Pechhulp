@@ -65,7 +65,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelButton:" destination="NK4-Bb-hZ2" eventType="touchUpInside" id="gks-mt-ifn"/>
+                                            <action selector="cancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KY3-Ha-mTj"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Voor dit nummer betaald u uw gebruikelijke belkosten." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fku-RE-qa7">
@@ -152,20 +152,6 @@
             </objects>
             <point key="canvasLocation" x="581.60000000000002" y="1005.2473763118442"/>
         </scene>
-        <!--Map Modal View Controller-->
-        <scene sceneID="TJX-zf-bKN">
-            <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="NK4-Bb-hZ2" customClass="MapModalViewController" customModule="RSR_pechhulp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rZQ-BV-sZt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Zub-Mn-L5O"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0eL-l0-yyJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1764" y="1006"/>
-        </scene>
         <!--RSR Revalidatieservice-->
         <scene sceneID="Yfk-ab-0LB">
             <objects>
@@ -174,7 +160,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_background" translatesAutoresizingMaskIntoConstraints="NO" id="ntV-E7-Vtp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_background-i5" translatesAutoresizingMaskIntoConstraints="NO" id="ntV-E7-Vtp">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdL-IS-ic9">
@@ -263,7 +249,7 @@
         <image name="ic_over" width="16" height="16"/>
         <image name="ic_over_ipad" width="30" height="30"/>
         <image name="ic_phone" width="32" height="36"/>
-        <image name="img_background" width="320" height="416"/>
+        <image name="img_background-i5" width="320" height="504"/>
         <image name="line" width="320" height="8"/>
         <image name="over_image" width="320" height="216"/>
         <image name="popup_back" width="284" height="184"/>
