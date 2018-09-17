@@ -15,6 +15,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var locationView: UIView!
+    @IBOutlet weak var callNowButton: UIButton!
+    @IBOutlet weak var callNowView: UIView!
     
     let locationManager: CLLocationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
@@ -24,9 +26,13 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationServices()
+        callNowView.isHidden = true
+        
     }
     @IBAction func callNowButton(_ sender: Any) {
         locationView.isHidden = true
+        callNowButton.isHidden = true
+        callNowView.isHidden = false
     }
     func configureLocationServices(){
         locationManager.delegate = self
@@ -43,7 +49,7 @@ class MapViewController: UIViewController {
         }
     }
     func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D){
-        let region = MKCoordinateRegionMakeWithDistance(coordinate, (coordinate.latitude * 40), (coordinate.longitude * 40))
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, (coordinate.latitude), (coordinate.longitude))
         mapView.setRegion(region, animated: true)
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         geoCoder.reverseGeocodeLocation(location) {
