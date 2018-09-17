@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HSQ-4K-jVX">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="D8E-6u-fDj">
+            <objects>
+                <navigationController id="HSQ-4K-jVX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yps-8d-7Hh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.79607843137254897" green="0.83137254901960778" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.11372549019607843" green="0.63921568627450975" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="v5E-Yf-UDp" kind="relationship" relationship="rootViewController" id="vpd-qg-ds5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZAs-6y-aBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1297" y="233"/>
+        </scene>
+        <!--RSR Pechhulp-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="RSR_pechhulp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6di-0E-7Es">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SOd-Ms-nMF">
+                                <rect key="frame" x="16" y="103" width="343" height="530"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="address_back" translatesAutoresizingMaskIntoConstraints="NO" id="MhB-w9-Uwl">
+                                        <rect key="frame" x="39" y="0.0" width="266" height="238"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Uw locatie:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INi-3w-WeJ">
+                                        <rect key="frame" x="119" y="16" width="105" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Onthoud deze locatie voor het telefoongesprek" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5a-T1-Rt7">
+                                        <rect key="frame" x="85" y="118" width="173" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qg-vv-SPW">
+                                        <rect key="frame" x="86" y="42" width="173" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVw-gD-6tq">
+                                        <rect key="frame" x="8" y="461" width="335" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <inset key="imageEdgeInsets" minX="-80" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Bel RSR nu" image="ic_phone" backgroundImage="btn_bel_normal"/>
+                                        <connections>
+                                            <action selector="callNowButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fsS-JB-voe"/>
+                                            <segue destination="NK4-Bb-hZ2" kind="presentation" modalPresentationStyle="overCurrentContext" id="9TA-9q-9WV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6di-0E-7Es" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6pH-Bx-wP2"/>
+                            <constraint firstItem="6di-0E-7Es" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Xi-kD-H0b"/>
+                            <constraint firstItem="6di-0E-7Es" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fF4-zv-CbW"/>
+                            <constraint firstItem="6di-0E-7Es" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tx6-Rw-yKD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="RSR Pechhulp" id="mBB-2S-Qgg">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="q8p-mV-w1g"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="locationView" destination="SOd-Ms-nMF" id="qpW-zk-9Uo"/>
+                        <outlet property="mapView" destination="6di-0E-7Es" id="1Em-MV-Szd"/>
+                        <outlet property="userLocationLabel" destination="7qg-vv-SPW" id="F57-aa-VDC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="583" y="1006"/>
+        </scene>
+        <!--Map Modal View Controller-->
+        <scene sceneID="TJX-zf-bKN">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="NK4-Bb-hZ2" customClass="MapModalViewController" customModule="RSR_pechhulp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rZQ-BV-sZt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="awt-aK-VZF">
+                                <rect key="frame" x="16" y="142" width="343" height="274"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popup_back" translatesAutoresizingMaskIntoConstraints="NO" id="bxN-ZH-haz">
+                                        <rect key="frame" x="9" y="39" width="327" height="227"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Belkosten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdn-PM-M16">
+                                        <rect key="frame" x="132" y="54" width="79" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dps-z3-bAR">
+                                        <rect key="frame" x="9" y="13" width="106" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Annuleren" backgroundImage="annuleren_normal">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="NK4-Bb-hZ2" eventType="touchUpInside" id="TQc-Li-GeY"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Voor dit nummer betaald u uw gebruikelijke belkosten." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMD-xi-27M">
+                                        <rect key="frame" x="8" y="83" width="335" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHk-9F-Ufg">
+                                        <rect key="frame" x="63" y="206" width="216" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Bel nu" image="ic_call" backgroundImage="btn_bel_normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Zub-Mn-L5O"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eL-l0-yyJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="1006"/>
+        </scene>
+        <!--RSR Revalidatieservice-->
+        <scene sceneID="Yfk-ab-0LB">
+            <objects>
+                <viewController id="v5E-Yf-UDp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xz1-wU-8yP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_background" translatesAutoresizingMaskIntoConstraints="NO" id="ntV-E7-Vtp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdL-IS-ic9">
+                                <rect key="frame" x="16" y="548" width="343" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <inset key="contentEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-80" minY="0.0" maxX="0.0" maxY="3"/>
+                                <state key="normal" title="RSR Pechhulp" image="ic_attention" backgroundImage="btn_normal"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="29g-Zq-o4N"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ntV-E7-Vtp" firstAttribute="trailing" secondItem="jhM-mg-3Q6" secondAttribute="trailing" id="CKw-xL-I4p"/>
+                            <constraint firstItem="wdL-IS-ic9" firstAttribute="top" secondItem="jhM-mg-3Q6" secondAttribute="top" constant="484" id="IgL-s6-n6I"/>
+                            <constraint firstItem="ntV-E7-Vtp" firstAttribute="top" secondItem="jhM-mg-3Q6" secondAttribute="top" id="KwQ-X4-gBN"/>
+                            <constraint firstItem="jhM-mg-3Q6" firstAttribute="bottom" secondItem="wdL-IS-ic9" secondAttribute="bottom" constant="65" id="Rdi-4G-H31"/>
+                            <constraint firstItem="jhM-mg-3Q6" firstAttribute="trailing" secondItem="wdL-IS-ic9" secondAttribute="trailing" constant="16" id="ehF-oV-gJK"/>
+                            <constraint firstItem="ntV-E7-Vtp" firstAttribute="leading" secondItem="jhM-mg-3Q6" secondAttribute="leading" id="rhS-k9-fPv"/>
+                            <constraint firstItem="ntV-E7-Vtp" firstAttribute="bottom" secondItem="jhM-mg-3Q6" secondAttribute="bottom" id="uSe-gr-lbf"/>
+                            <constraint firstItem="wdL-IS-ic9" firstAttribute="leading" secondItem="jhM-mg-3Q6" secondAttribute="leading" constant="16" id="z2R-bz-Hle"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jhM-mg-3Q6"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="RSR Revalidatieservice" id="N8e-OW-reK">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="Rx7-ou-Bxd"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ic_over_ipad" landscapeImage="ic_over" id="PeU-rw-Mml">
+                            <connections>
+                                <segue destination="8yY-l0-IuT" kind="show" id="zpw-XR-3fx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q4s-z1-fED" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-454" y="233"/>
+        </scene>
+        <!--Over RSR-->
+        <scene sceneID="KB7-9T-rEi">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8H-MN-HP5" sceneMemberID="firstResponder"/>
+                <viewController id="8yY-l0-IuT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a75-fz-Uuv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="d4K-Tk-dGz">
+                                <rect key="frame" x="0.0" y="301" width="375" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="over_image" translatesAutoresizingMaskIntoConstraints="NO" id="W3q-Gf-U7f">
+                                <rect key="frame" x="0.0" y="64" width="375" height="241"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eRD-Or-P8t">
+                                <rect key="frame" x="0.0" y="313" width="375" height="354"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Met de hulp van RSR blijft u mobiel. RSR is dé leverancier van hulpmiddelen in de regio Noordoost-Nederland. Gedegen kennis en jarenlange ervaring zit in ons DNA verweven en leidt tot het beste advies.  Wilt u meer weten over onze producten en diensten, kijk dan op www.rsr.nl of bezoek onze showrooms in Silvolde en Nieuwleusen. We zijn iedere werkdag geopend van 8.00 tot 17.00. Hier kunt u diverse hulpmiddelen uitproberen en rustig bekijken wat goed bij uw situatie aansluit. Samen met u zoeken we naar hulpmiddelen dat bij u past. RSR maakt mensen mobiel.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="eOl-ev-ahd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Over RSR" id="GcY-iX-gv7">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="LeT-mV-Zf7"/>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="581.60000000000002" y="232.53373313343329"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="address_back" width="204" height="172"/>
+        <image name="annuleren_normal" width="106" height="26"/>
+        <image name="btn_bel_normal" width="216" height="48"/>
+        <image name="btn_normal" width="286" height="54"/>
+        <image name="ic_attention" width="42" height="36"/>
+        <image name="ic_call" width="30" height="36"/>
+        <image name="ic_over" width="16" height="16"/>
+        <image name="ic_over_ipad" width="30" height="30"/>
+        <image name="ic_phone" width="32" height="36"/>
+        <image name="img_background" width="320" height="416"/>
+        <image name="line" width="320" height="8"/>
+        <image name="over_image" width="320" height="216"/>
+        <image name="popup_back" width="284" height="184"/>
+    </resources>
+</document>
