@@ -12,6 +12,7 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    // Decleration of all Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var locationView: UIView!
@@ -23,23 +24,32 @@ class MapViewController: UIViewController {
     var pinAnnotationView: MKPinAnnotationView!
     let geoCoder = CLGeocoder()
     let zoomLevel: Double = 40
+    let number = "TEL://+319007788990"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationServices()
-        callNowView.alpha = 0
-    }
-    @IBAction func cancelButton(_ sender: Any) {
-        callNowView.alpha = 0
-        locationView.alpha = 1
-        callNowButton.alpha = 1
+        callNowView.isHidden = true
     }
     
-    @IBAction func callNowButton(_ sender: Any) {
-        locationView.alpha = 0
-        callNowButton.alpha = 0
-        callNowView.alpha = 1
+    @IBAction func cancelButton(_ sender: Any) {
+        callNowView.isHidden = false
+        locationView.isHidden = true
+        callNowButton.isHidden = true
     }
+    
+    //hide the address information and button
+    @IBAction func callNowButton(_ sender: Any) {
+        locationView.isHidden = true
+        callNowButton.isHidden = true
+        callNowView.isHidden = false
+    }
+    @IBAction func callPopUp(_ sender: Any) {
+        let url: NSURL = URL(string: "TEL://+319007788990")! as NSURL
+        UIApplication.shared.open((url as URL), options: [:], completionHandler: nil)
+    }
+    
+    //Configure the services for finding the location of the user
     func configureLocationServices(){
         locationManager.delegate = self
         mapView.delegate = self
@@ -54,9 +64,14 @@ class MapViewController: UIViewController {
             locationManager.startUpdatingLocation()
         }
     }
+    
+    //Zooms to the location of the user on the load of the VC
     func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D){
+        //Sets the zoom region
         let region = MKCoordinateRegionMakeWithDistance(coordinate, (coordinate.latitude * zoomLevel), (coordinate.longitude * zoomLevel))
         mapView.setRegion(region, animated: true)
+        
+        //Finds the location based on the users location and fills the labels on the screen
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         geoCoder.reverseGeocodeLocation(location) {
             (placemarks, error) -> Void in
@@ -76,24 +91,21 @@ class MapViewController: UIViewController {
                 if placemark.locality != nil {
                     addressInformationString = addressInformationString + placemark.locality! + ""
                 }
-                
                 self.userLocationLabel.text = addressInformationString
-                
             }
         }
-
-        
     }
+    
+    //Setting the marker information
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        annotationView.canShowCallout = true
         annotationView.image = UIImage(named: "marker")
         return annotationView
     }
 }
 
-
 extension MapViewController: CLLocationManagerDelegate{
+    //Checks if there was an location update from the user
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         guard let latestLocation = locations.first else { return }
@@ -104,6 +116,7 @@ extension MapViewController: CLLocationManagerDelegate{
         currentCoordinate = latestLocation.coordinate
     }
 }
+
 extension MapViewController: MKMapViewDelegate{
 
 }

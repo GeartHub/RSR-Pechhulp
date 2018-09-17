@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DA113728214FCA3B002BE221 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA113727214FCA3B002BE221 /* MapViewController.swift */; };
-		DA696B54214FF0EA00C79939 /* MapModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA696B53214FF0EA00C79939 /* MapModalViewController.swift */; };
 		DAF3A581214C004D00634E30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3A580214C004D00634E30 /* AppDelegate.swift */; };
 		DAF3A586214C004D00634E30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF3A584214C004D00634E30 /* Main.storyboard */; };
 		DAF3A589214C004D00634E30 /* RSR_pechhulp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAF3A587214C004D00634E30 /* RSR_pechhulp.xcdatamodeld */; };
@@ -19,7 +18,6 @@
 
 /* Begin PBXFileReference section */
 		DA113727214FCA3B002BE221 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		DA696B53214FF0EA00C79939 /* MapModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModalViewController.swift; sourceTree = "<group>"; };
 		DAF3A57D214C004D00634E30 /* RSR pechhulp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RSR pechhulp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF3A580214C004D00634E30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAF3A585214C004D00634E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 				DAF3A597214C0B4600634E30 /* ViewController.swift */,
 				DAF3A580214C004D00634E30 /* AppDelegate.swift */,
 				DA113727214FCA3B002BE221 /* MapViewController.swift */,
-				DA696B53214FF0EA00C79939 /* MapModalViewController.swift */,
 				DAF3A584214C004D00634E30 /* Main.storyboard */,
 				DAF3A58A214C004E00634E30 /* Assets.xcassets */,
 				DAF3A58C214C004F00634E30 /* LaunchScreen.storyboard */,
@@ -147,7 +144,6 @@
 				DAF3A589214C004D00634E30 /* RSR_pechhulp.xcdatamodeld in Sources */,
 				DAF3A598214C0B4600634E30 /* ViewController.swift in Sources */,
 				DAF3A581214C004D00634E30 /* AppDelegate.swift in Sources */,
-				DA696B54214FF0EA00C79939 /* MapModalViewController.swift in Sources */,
 				DA113728214FCA3B002BE221 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
