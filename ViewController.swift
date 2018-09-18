@@ -7,11 +7,23 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
     
+    let locationManager: CLLocationManager = CLLocationManager()
+    let mapVC = MapViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let status = CLLocationManager.authorizationStatus()
+        
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else if status == .authorizedWhenInUse || status == .authorizedAlways{
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
     

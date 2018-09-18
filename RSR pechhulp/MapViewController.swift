@@ -23,27 +23,45 @@ class MapViewController: UIViewController {
     var currentCoordinate: CLLocationCoordinate2D?
     var pinAnnotationView: MKPinAnnotationView!
     let geoCoder = CLGeocoder()
-    let zoomLevel: Double = 40
+    let zoomLevel: Double = 30
     let number = "TEL://+319007788990"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationServices()
         callNowView.isHidden = true
+        callNowView.alpha = 0
+        locationView.alpha = 0
+    }
+    @IBAction func callNowButton(_ sender: Any) {
+        self.callNowView.isHidden = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.locationView.alpha = 0
+            self.callNowButton.alpha = 0
+            self.callNowView.alpha = 1
+        }, completion: {
+            (value: Bool) in
+            self.locationView.isHidden = true
+            self.callNowButton.isHidden = true
+            
+        })
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        callNowView.isHidden = false
-        locationView.isHidden = true
-        callNowButton.isHidden = true
+        self.locationView.isHidden = false
+        self.callNowButton.isHidden = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.locationView.alpha = 1
+            self.callNowButton.alpha = 1
+            self.callNowView.alpha = 0
+        }, completion: {
+            (value: Bool) in
+            self.callNowView.isHidden = true
+            
+        })
     }
     
     //hide the address information and button
-    @IBAction func callNowButton(_ sender: Any) {
-        locationView.isHidden = true
-        callNowButton.isHidden = true
-        callNowView.isHidden = false
-    }
     @IBAction func callPopUp(_ sender: Any) {
         let url: NSURL = URL(string: "TEL://+319007788990")! as NSURL
         UIApplication.shared.open((url as URL), options: [:], completionHandler: nil)
@@ -62,6 +80,13 @@ class MapViewController: UIViewController {
             mapView.showsUserLocation = true
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+        } else if status == .denied || status == .restricted{
+            let alert = UIAlertController(title: "GPS aanzetten", message: "U heeft deze app geen toegang gegeven voor GPS. Zet dit a.u.b aan in uw instellingen.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+
         }
     }
     
@@ -71,6 +96,7 @@ class MapViewController: UIViewController {
         let region = MKCoordinateRegionMakeWithDistance(coordinate, (coordinate.latitude * zoomLevel), (coordinate.longitude * zoomLevel))
         mapView.setRegion(region, animated: true)
         
+        locationView.alpha = 1
         //Finds the location based on the users location and fills the labels on the screen
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         geoCoder.reverseGeocodeLocation(location) {
