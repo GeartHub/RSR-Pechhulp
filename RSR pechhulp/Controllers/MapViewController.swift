@@ -21,7 +21,7 @@ class MapViewController: UIViewController {
     var currentCoordinates: CLLocationCoordinate2D?
     var pinAnnotationView: MKPinAnnotationView!
     let geoCoder = CLGeocoder()
-    let zoomLevel: Double = 30
+    let zoomLevel: Double = 30 // waarom 30
     let number = "TEL://+319007788990"
     
     override func viewDidLoad() {
@@ -30,6 +30,7 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         
         configureLocationServices()
+        
         //MARK: View Setup
         callNowView.isHidden = true
         callNowView.alpha = 0
@@ -37,6 +38,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func callNowButton(_ sender: Any) {
+        
+        //MARK: Show call now pop-up
         self.callNowView.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
             self.locationView.alpha = 0
@@ -51,6 +54,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
+        //MARK: Hide call now pop-up
         self.locationView.isHidden = false
         self.callNowButton.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
@@ -93,7 +97,7 @@ class MapViewController: UIViewController {
     }
     
     /**
-     Shows an error to the user when they didnt meet the requirements needed to load the application.
+     Shows an error to the user when they didn't meet the requirements needed to load the application.
      
      - Parameter error: The error situation of the user. e.g No internet.
      */
@@ -130,22 +134,33 @@ class MapViewController: UIViewController {
             (placemarks, error) -> Void in
             if let placemarks = placemarks, placemarks.count > 0 {
                 let placemark = placemarks[0]
-                var addressInformationString: String = ""
                 
-                if placemark.thoroughfare != nil {
-                    addressInformationString = addressInformationString + placemark.thoroughfare! + " "
-                }
-                if placemark.subThoroughfare != nil {
-                    addressInformationString = addressInformationString + placemark.subThoroughfare! + ", \n"
-                }
-                if placemark.postalCode != nil {
-                    addressInformationString = addressInformationString + placemark.postalCode! + ", "
-                }
-                if placemark.locality != nil {
-                    addressInformationString = addressInformationString + placemark.locality! + ""
-                }
+                var addressInformationString: String = ""
+                self.fillPlacemark(pm: placemark)
+                
+//                if placemark.thoroughfare != nil {
+//                    addressInformationString = addressInformationString + placemark.thoroughfare! + " "
+//                }
+//                if placemark.subThoroughfare != nil {
+//                    addressInformationString = addressInformationString + placemark.subThoroughfare! + ", \n"
+//                }
+//                if placemark.postalCode != nil {
+//                    addressInformationString = addressInformationString + placemark.postalCode! + ", "
+//                }
+//                if placemark.locality != nil {
+//                    addressInformationString = addressInformationString + placemark.locality! + ""
+//                }
                 self.userLocationLabel.text = addressInformationString
             }
+        }
+    }
+    
+    func fillPlacemark(pm: CLPlacemark){
+        let placemarkMirror = Mirror(reflecting: pm)
+        print(pm)
+        print(placemarkMirror)
+        for (index, attr) in placemarkMirror.children.enumerated(){
+            print(attr, index)
         }
     }
 }
@@ -153,9 +168,7 @@ class MapViewController: UIViewController {
 extension MapViewController: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
         guard let latestLocation = locations.first else { return }
-        
         if currentCoordinates == nil{
             zoomToLatestLocation(with: latestLocation.coordinate)
         }
