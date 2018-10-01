@@ -21,15 +21,15 @@ class MapViewController: UIViewController {
     var currentCoordinates: CLLocationCoordinate2D?
     var pinAnnotationView: MKPinAnnotationView!
     let geoCoder = CLGeocoder()
-    let zoomLevel: Double = 30 // waarom 30
-    let number = "TEL://+319007788990"
+    let zoomLevel: Double = 30 // Optimal zoom level for the map
+    let telephoneNumber = "TEL://+319007788990" // Phone number of the RSR service
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.requestWhenInUseAuthorization()
         
-        configureLocationServices()
+        configureServices()
         
         //MARK: View Setup
         callNowView.isHidden = true
@@ -69,11 +69,13 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func callPopUp(_ sender: Any) {
-        let url: NSURL = URL(string: "TEL://+319007788990")! as NSURL
+        let url: NSURL = URL(string: telephoneNumber)! as NSURL
         UIApplication.shared.open((url as URL), options: [:], completionHandler: nil)
     }
-    
-    func configureLocationServices(){
+    /**
+     Shows and checks the required user premissions
+    */
+    func configureServices(){
         locationManager.delegate = self
         mapView.delegate = self
         
@@ -95,6 +97,7 @@ class MapViewController: UIViewController {
         }
         
     }
+ 
     
     /**
      Shows an error to the user when they didn't meet the requirements needed to load the application.
@@ -115,17 +118,18 @@ class MapViewController: UIViewController {
      
      - Parameter coordinate: The users coordinations
      */
-    func zoomToLatestLocation(with coordinates: CLLocationCoordinate2D){
+    func zoomToCurrentLocation(with coordinates: CLLocationCoordinate2D){
         let region = MKCoordinateRegionMakeWithDistance(coordinates, (coordinates.latitude * zoomLevel), (coordinates.longitude * zoomLevel))
-        mapView.setRegion(region, animated: true)
-        showUsersLocation(with: coordinates)
+        UIView.animate(withDuration: 1.0, animations: {self.mapView.setRegion(region, animated: true)}) { (value: Bool) in
+            self.showUserLocation(with: coordinates)
+        }
     }
     /**
-     Zooms to the users location
+     Fills the labels with this address information of the user
      
      - Parameter coordinate: The users coordinations
      */
-    func showUsersLocation(with coordinates: CLLocationCoordinate2D){
+    func showUserLocation(with coordinates: CLLocationCoordinate2D){
         
         locationView.alpha = 1
         
@@ -134,33 +138,8 @@ class MapViewController: UIViewController {
             (placemarks, error) -> Void in
             if let placemarks = placemarks, placemarks.count > 0 {
                 let placemark = placemarks[0]
-                
-                var addressInformationString: String = ""
-                self.fillPlacemark(pm: placemark)
-                
-//                if placemark.thoroughfare != nil {
-//                    addressInformationString = addressInformationString + placemark.thoroughfare! + " "
-//                }
-//                if placemark.subThoroughfare != nil {
-//                    addressInformationString = addressInformationString + placemark.subThoroughfare! + ", \n"
-//                }
-//                if placemark.postalCode != nil {
-//                    addressInformationString = addressInformationString + placemark.postalCode! + ", "
-//                }
-//                if placemark.locality != nil {
-//                    addressInformationString = addressInformationString + placemark.locality! + ""
-//                }
-                self.userLocationLabel.text = addressInformationString
+                self.userLocationLabel.text = String(placemark.thoroughfare! + " " + placemark.subThoroughfare! + ", \n " + placemark.postalCode! + ", " +  placemark.locality!)
             }
-        }
-    }
-    
-    func fillPlacemark(pm: CLPlacemark){
-        let placemarkMirror = Mirror(reflecting: pm)
-        print(pm)
-        print(placemarkMirror)
-        for (index, attr) in placemarkMirror.children.enumerated(){
-            print(attr, index)
         }
     }
 }
@@ -170,7 +149,7 @@ extension MapViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let latestLocation = locations.first else { return }
         if currentCoordinates == nil{
-            zoomToLatestLocation(with: latestLocation.coordinate)
+            zoomToCurrentLocation(with: latestLocation.coordinate)
         }
         currentCoordinates = latestLocation.coordinate
     }
