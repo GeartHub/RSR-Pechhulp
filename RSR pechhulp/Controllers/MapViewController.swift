@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     let geoCoder = CLGeocoder()
     let zoomLevel: Double = 30 // Optimal zoom level for the map
     let telephoneNumber = "TEL://+319007788990" // Phone number of the RSR service
+    var blackSquare: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +71,7 @@ class MapViewController: UIViewController {
     
     @IBAction func callPopUp(_ sender: Any) {
         let url: NSURL = URL(string: telephoneNumber)! as NSURL
-        UIApplication.shared.open((url as URL), options: [:], completionHandler: nil)
+        UIApplication.shared.open((url as URL), options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     /**
      Shows and checks the required user premissions
@@ -108,7 +109,7 @@ class MapViewController: UIViewController {
         let errorMessages = ErrorMessages()
         
         let alert: UIAlertController = UIAlertController(title: errorMessages[error].title, message: errorMessages[error].message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -119,9 +120,11 @@ class MapViewController: UIViewController {
      - Parameter coordinate: The users coordinations
      */
     func zoomToCurrentLocation(with coordinates: CLLocationCoordinate2D){
-        let region = MKCoordinateRegionMakeWithDistance(coordinates, (coordinates.latitude * zoomLevel), (coordinates.longitude * zoomLevel))
+        let region = MKCoordinateRegion.init(center: coordinates, latitudinalMeters: (coordinates.latitude * zoomLevel), longitudinalMeters: (coordinates.longitude * zoomLevel))
         UIView.animate(withDuration: 1.0, animations: {self.mapView.setRegion(region, animated: true)}) { (value: Bool) in
             self.showUserLocation(with: coordinates)
+
+
         }
     }
     /**
@@ -159,6 +162,14 @@ extension MapViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         annotationView.image = UIImage(named: "marker")
+        locationView.frame = CGRect(x: -(locationView.frame.width  / 2), y: -(locationView.frame.height), width: locationView.frame.width, height: locationView.frame.height)
+        annotationView.addSubview(locationView)
+        
         return annotationView
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
